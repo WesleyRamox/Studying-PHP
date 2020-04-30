@@ -1,0 +1,7 @@
+# Bloqueia a listagem de diretórios.
+
+Options All -Indexes
+
+# Mensagem de erro personalizada.
+
+ErrorDocument 403 /error_page/403.html

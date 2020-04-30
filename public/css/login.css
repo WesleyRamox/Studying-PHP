@@ -1,0 +1,21 @@
+html,body {
+  font-family: 'Open Sans', serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+input {
+  font-weight: 300;
+}
+p {
+  font-weight: 700;
+}
+
+label {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.form-check-label {
+  font-size: 15px;
+}
