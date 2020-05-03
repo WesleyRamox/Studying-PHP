@@ -16,16 +16,19 @@ if(empty($_POST['usuario']) && empty($_POST['senha'])) {
 	exit();
 }
 
- 
+ // ESCAPANDO SQL INJECTION NOS INPUTS
 $usuario = mysqli_real_escape_string($conexao, $_POST['usuario']);
 $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
- 
-$query = "select * from usuarios where usuario = '{$usuario}' and senha = md5('{$senha}')";
- 
+
+// PROCURANDO USUARIO E SENHA NA DATABASE
+$query = "select * from usuarios where usuario = '{$usuario}' and senha = MD5('{$senha}')";
+
 $result = mysqli_query($conexao, $query);
  
+// QUANTIDADE DE LINHAS ENCONTRADAS
 $row = mysqli_num_rows($result);
- 
+
+// VERIFICAÇÃO
 if($row == 1) {
 	$_SESSION['usuario'] = $usuario;
 	header('Location: ../panel/painel.php');
@@ -35,6 +38,5 @@ if($row == 1) {
 	$_SESSION['nao_autenticado'] = true;
 	header('Location: ../index.php');
 	$_SESSION['msg_error'] = "Error: User does not exist";
-
 	exit();
 }
